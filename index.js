@@ -5,7 +5,7 @@ const ejs = require("ejs");
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3005;
 const path = require("path");
 
 const data = require("./data/data");
@@ -27,15 +27,15 @@ app.post(`/anime/item`, (req, res) => {
 });
 
 app.delete(`/anime/item/:id`, (req, res) => {
-    const id = req.params.title;
+    const id = req.params.id;
 
-    anime.splice(1, 1);
+    anime.splice(id - 1, 1);
     res.send(`delete item pada id: ${id} succes`);
 });
 app.put(`/anime/item/:id`, (req, res) => {
-    const id = req.params.title;
-    const { title, years, id } = req.body;
-    anime.splice(id, 1, {
+    const id = req.params.id;
+    const { title, years } = req.body;
+    anime.splice(id - 1, 1, {
         title,
         years,
         id,

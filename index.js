@@ -16,21 +16,21 @@ app.get("/anime", (req, res) => {
     res.send(data);
 });
 app.post(`/anime/item`, (req, res) => {
-    const { title, years } = req.body;
+    const { title, years, id } = req.body;
     anime.push({
         title,
         years,
         id,
     });
 
-    res.send(`ini post ${title} tahun ${years}`);
+    res.send(data);
 });
 
 app.delete(`/anime/item/:id`, (req, res) => {
     const id = req.params.id;
 
     anime.splice(id - 1, 1);
-    res.send(`delete item pada id: ${id} succes`);
+    res.send(data);
 });
 app.put(`/anime/item/:id`, (req, res) => {
     const id = req.params.id;
@@ -40,8 +40,7 @@ app.put(`/anime/item/:id`, (req, res) => {
         years,
         id,
     });
-    res.send(`delete item pada id: ${id} succes`);
-    res.send(`update item`);
+    res.send(data);
 });
 
 app.listen(port, () =>

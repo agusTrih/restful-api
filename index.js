@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 
 // Get
 app.get("/anime", (req, res) => {
-    res.send(data);
+    res.send(anime);
 });
 // post
 app.post(`/anime`, (req, res) => {
@@ -47,14 +47,14 @@ app.post(`/anime`, (req, res) => {
         id,
     });
 
-    res.send(data);
+    res.send(anime);
 });
 // delete
 app.delete(`/anime/:id`, (req, res) => {
     const id = req.params.id;
 
     anime.splice(id, 1);
-    res.send(data);
+    res.send(anime);
 });
 // put
 app.put(`/anime/:id`, (req, res) => {

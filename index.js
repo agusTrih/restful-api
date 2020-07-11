@@ -53,19 +53,37 @@ app.post(`/anime`, (req, res) => {
 app.delete(`/anime/:id`, (req, res) => {
     const id = req.params.id;
 
-    anime.splice(id - 1, 1);
+    anime.splice(id, 1);
     res.send(data);
 });
 // put
 app.put(`/anime/:id`, (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
     const { title, years } = req.body;
-    anime.splice(id - 1, 1, {
-        title,
-        years,
+    let newTitle;
+    let newYears;
+
+    if (title === null || title === "") {
+        newTitle = anime[id].title;
+    } else {
+        newTitle = title;
+    }
+
+    if (years === null || years === "") {
+        newYears = anime[id].years;
+    } else {
+        newYears = years;
+    }
+
+    anime.splice(id, 1, {
         id,
+        title: newTitle,
+        years: newYears,
     });
-    res.send(data);
+    res.send({
+        message: "Data berhasil diubah",
+        updateddata: anime,
+    });
 });
 
 app.listen(port, () =>

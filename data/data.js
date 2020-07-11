@@ -1,4 +1,5 @@
 let anime = [
+    { id: 0, title: "konosuba", years: 2000 },
     { id: 1, title: "kimi no nawa", years: 2000 },
     { id: 2, title: "one piece", years: 1995 },
     { id: 3, title: "One punch man", years: 2000 },

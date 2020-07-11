@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
     tidak perlu diawali dengan /views lagi,
     langsung file atau folder yang ada 
      di dalamnya */
-    res.render("Home");
+    res.render("pages/Home");
 });
 
 // ini contoh router ke dalam file html
@@ -38,11 +38,7 @@ app.get("/", (req, res) => {
 app.get("/anime", (req, res) => {
     res.send(data);
 });
-app.get("/anime/:id", (req, res) => {
-    const id = req.params.id;
-
-    res.send(data[id]);
-});
+// post
 app.post(`/anime`, (req, res) => {
     const { title, years, id } = req.body;
     anime.push({
